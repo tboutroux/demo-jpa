@@ -17,6 +17,7 @@
 
       <property name="show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>
+
     </properties>
 
   </persistence-unit>

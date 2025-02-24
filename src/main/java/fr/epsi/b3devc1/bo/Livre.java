@@ -1,12 +1,7 @@
 package fr.epsi.b3devc1.bo;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Table;
-import jakarta.persistence.GenerationType;
+import java.util.List;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "LIVRE")
@@ -23,6 +18,9 @@ public class Livre {
     @Column(name = "AUTEUR")
     private String auteur;
 
+    @ManyToMany(mappedBy = "livres")
+    private List<Emprunt> emprunts;
+
     public Livre() {}
 
     public Livre(String titre, String auteur) {
@@ -38,12 +36,20 @@ public class Livre {
         return auteur;
     }
 
+    public List<Emprunt> getEmprunts() {
+        return emprunts;
+    }
+
     public void setTitre(String titre) {
         this.titre = titre;
     }
 
     public void setAuteur(String auteur) {
         this.auteur = auteur;
+    }
+
+    public void setEmprunts(List<Emprunt> emprunts) {
+        this.emprunts = emprunts;
     }
 
     @Override
